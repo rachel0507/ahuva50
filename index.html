@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אהובה בת 50 ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;700;900&family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-pale: #FBF3DC;
+    --rose: #8B3A3A;
+    --rose-deep: #5C1F1F;
+    --cream: #FFFDF5;
+    --text: #2A1A1A;
+    --muted: #7A5A5A;
+  }
+
+  html, body {
+    min-height: 100%;
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(139,58,58,0.08) 0%, transparent 50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+
+  .page { width: 100%; max-width: 560px; }
+
+  .ornament {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.1s;
+  }
+
+  .card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    box-shadow: 0 2px 40px rgba(139,58,58,0.06), 0 0 0 1px rgba(201,168,76,0.08);
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.2s;
+  }
+
+  .header { text-align: center; margin-bottom: 2.5rem; }
+
+  .number-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    border: 2px solid rgba(201,168,76,0.4);
+    margin-bottom: 1.25rem;
+  }
+  .number-badge span {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--rose-deep);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2rem 0;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, rgba(201,168,76,0.3));
+  }
+  .divider::after { background: linear-gradient(to right, transparent, rgba(201,168,76,0.3)); }
+  .divider span { font-size: 16px; color: var(--gold); }
+
+  .field-group { margin-bottom: 1.5rem; }
+
+  label.field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1.5px solid rgba(201,168,76,0.25);
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: 'Heebo', sans-serif;
+    background: var(--gold-pale);
+    color: var(--text);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input[type="text"]::placeholder { color: #C0A0A0; }
+  input[type="text"]:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+  }
+
+  .dates-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .option-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(201,168,76,0.18);
+    background: var(--gold-pale);
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+  }
+  .option-row:hover { border-color: rgba(201,168,76,0.45); }
+  .option-row.checked {
+    border-color: var(--gold);
+    background: #FEF7E0;
+  }
+  .option-row.cant-row.checked {
+    border-color: rgba(139,58,58,0.3);
+    background: #FDF0F0;
+  }
+
+  .custom-check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(201,168,76,0.4);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .option-row.checked .custom-check {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+  .option-row.cant-row.checked .custom-check {
+    background: var(--rose);
+    border-color: var(--rose);
+  }
+  .custom-check svg { display: none; }
+  .option-row.checked .custom-check svg { display: block; }
+
+  .option-row input[type="checkbox"] { display: none; }
+
+  .option-text { flex: 1; }
+  .option-main { font-size: 15px; font-weight: 500; color: var(--text); }
+  .option-sub { font-size: 13px; color: var(--muted); margin-top: 1px; }
+
+  .cant-row .option-main { font-size: 14px; color: var(--muted); }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 1.75rem;
+    padding: 16px;
+    background: var(--gold);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn:hover { background: #B8932A; }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .error-msg {
+    font-size: 13px;
+    color: var(--rose);
+    text-align: center;
+    margin-top: 10px;
+    min-height: 18px;
+  }
+
+  .footer-note {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    font-weight: 300;
+  }
+
+  /* Success state */
+  .success-area {
+    display: none;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #EAF3DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+  }
+  .success-icon svg { width: 32px; height: 32px; stroke: #3B6D11; fill: none; stroke-width: 2.5; }
+  .success-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--rose-deep);
+    margin-bottom: 8px;
+  }
+  .success-sub { font-size: 15px; color: var(--muted); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 2rem 1.5rem; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="ornament">✦ &nbsp; יום הולדת חמישים &nbsp; ✦</div>
+
+  <div class="card">
+    <div class="header">
+      <div class="number-badge"><span>50</span></div>
+      <h1>אהובה שלנו</h1>
+      <p class="tagline">חמישים שנים של לב גדול, חום ונתינה 💛<br>נשמח שתסמני מה נוח לך</p>
+    </div>
+
+    <div id="form-area">
+      <div class="field-group">
+        <label class="field-label" for="name-input">השם שלך</label>
+        <input type="text" id="name-input" placeholder="הכניסי את שמך..." autocomplete="name" />
+      </div>
+
+      <div class="divider"><span>✦</span></div>
+
+      <p class="dates-label">מה מתאים לך?</p>
+
+      <label class="option-row" id="row-d1" onclick="toggle('d1')">
+        <input type="checkbox" id="d1">
+        <div class="custom-check">
+          <svg viewBox="0 0 12 10"><polyline points="1,5 4.5,8.5 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="option-text">
+          <div class="option-main">יום שלישי, י״ב בסיוון</div>
+          <div class="option-sub">3.6.2025 · ערב</div>
+        </div>
+      </label>
+
+      <label class="option-row" id="row-d2" onclick="toggle('d2')">
+        <input type="checkbox" id="d2">
+        <div class="custom-check">
+          <svg viewBox="0 0 12 10"><polyline points="1,5 4.5,8.5 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="option-text">
+          <div class="option-main">יום רביעי, י״ג בסיוון</div>
+          <div class="option-sub">4.6.2025 · ערב</div>
+        </div>
+      </label>
+
+      <label class="option-row" id="row-d3" onclick="toggle('d3')">
+        <input type="checkbox" id="d3">
+        <div class="custom-check">
+          <svg viewBox="0 0 12 10"><polyline points="1,5 4.5,8.5 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="option-text">
+          <div class="option-main">יום חמישי, י״ד בסיוון</div>
+          <div class="option-sub">5.6.2025 · ערב</div>
+        </div>
+      </label>
+
+      <label class="option-row cant-row" id="row-cant" onclick="toggle('cant')">
+        <input type="checkbox" id="cant">
+        <div class="custom-check">
+          <svg viewBox="0 0 12 10"><polyline points="1,5 4.5,8.5 11,1" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="option-text">
+          <div class="option-main">לצערי לא אוכל להשתתף</div>
+        </div>
+      </label>
+
+      <p class="error-msg" id="err-msg"></p>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitForm()">שליחה באהבה 💖</button>
+
+      <p class="footer-note">מתרגשות לחגוג יחד 🎈</p>
+    </div>
+
+    <div class="success-area" id="success-area">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+      </div>
+      <div class="success-title">תודה, <span id="success-name"></span>!</div>
+      <p class="success-sub">הבחירה שלך התקבלה ✨<br>מתרגשות לחגוג יחד 🎈</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ← הכניסי כאן את ה-URL של Apps Script לאחר פרסום
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuONv-2SrDRdxP_oJ7LVb0FapGihHMKkq27GvGEFgf5CXqZHrBC-Sj8OPdcQ5fXQmK/exec';
+
+  function toggle(id) {
+    const cb = document.getElementById(id);
+    cb.checked = !cb.checked;
+    const row = document.getElementById('row-' + id);
+    row.classList.toggle('checked', cb.checked);
+    document.getElementById('err-msg').textContent = '';
+  }
+
+  async function submitForm() {
+    const name = document.getElementById('name-input').value.trim();
+    const d1 = document.getElementById('d1').checked;
+    const d2 = document.getElementById('d2').checked;
+    const d3 = document.getElementById('d3').checked;
+    const cant = document.getElementById('cant').checked;
+    const err = document.getElementById('err-msg');
+
+    if (!name) { err.textContent = 'נא להכניס שם'; return; }
+    if (!d1 && !d2 && !d3 && !cant) { err.textContent = 'נא לבחור לפחות אפשרות אחת'; return; }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'שולחת...';
+
+    const payload = {
+      name,
+      date1: d1 ? 'כן' : '',
+      date2: d2 ? 'כן' : '',
+      date3: d3 ? 'כן' : '',
+      cant: cant ? 'כן' : '',
+      notifyEmail: 'rby0507@gmail.com'
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      document.getElementById('success-name').textContent = name;
+      document.getElementById('form-area').style.display = 'none';
+      document.getElementById('success-area').style.display = 'block';
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = 'שליחה באהבה 💖';
+      err.textContent = 'שגיאה בשליחה — נסי שוב';
+    }
+  }
+</script>
+</body>
+</html>
